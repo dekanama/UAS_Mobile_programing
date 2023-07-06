@@ -55,8 +55,29 @@ public class MainActivity extends AppCompatActivity {
                 String isian_nama = edNama.getText().toString();
                 String isian_nim = edNim.getText().toString();
                 String isian_noHp = edNoHp.getText().toString();
+                int mhslist = Integer.parseInt(mhsList.toString());
 
-                if (isian_nama.isEmpty() || isian_nim.isEmpty() || isian_noHp.isEmpty()) {
+                Intent intent_list = new Intent(MainActivity.this, ListMhsActivity.class);
+
+
+                for(int i=1; i <= mhslist; i++){
+                    System.out.print(i+" ");
+                }
+
+                if(isian_nama.isEmpty() || isian_nim.isEmpty() || isian_nomerhp.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Empty", Toast.LENGTH_SHORT).show();
+                    @@ -101,7 +109,7 @@ public void onClick(View view) {
+                        mhsList = db.list();
+
+                        if(mhsList.isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "No Data", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Data Melebihi Batas", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Intent intent_list = new Intent(MainActivity.this, ListMhsActivity.class);
+                            intent_list.putParcelableArrayListExtra("mhsList", mhsList);
+
+
+                            if (isian_nama.isEmpty() || isian_nim.isEmpty() || isian_noHp.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Isian masih kosong", Toast.LENGTH_SHORT).show();
                 } else {
                     //mhsList.add(new MhsModel(1, isian_nama, isian_nim, isian_noHp));
